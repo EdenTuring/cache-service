@@ -1,4 +1,0 @@
-m17:50:46.947 [Test worker] INFO com.assignment.cache.service.BondService -- Looking for bond with id: testId
-u17:50:46.961 [Test worker] INFO com.assignment.cache.service.BondService -- Adding new bond to cache with id: testId
-m17:50:46.961 [Test worker] INFO com.assignment.cache.service.BondService -- Looking for bond with id: testId
-g17:50:46.962 [Test worker] INFO com.assignment.cache.service.BondService -- Found bond with id: testId

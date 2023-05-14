@@ -1,7 +1,7 @@
 package com.assignment.cache.service;
 
 import com.assignment.cache.model.Bond;
-import com.assignment.cache.utils.LazyCache;
+import com.assignment.cache.utils.Cache;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -18,12 +18,8 @@ public class BondService {
     //package protected for unit testing
     static final String BOND_WAS_NOT_FOUND = "Bond was not found";
 
-    private final LazyCache<String, Bond> bondLazyCache;
+    private final Cache<String, Bond> bondCache = new Cache<>();
 
-
-    public BondService(LazyCache<String, Bond> bondLazyCache) {
-        this.bondLazyCache = bondLazyCache;
-    }
 
     public void saveNewBond(Bond bond) {
 
@@ -31,14 +27,14 @@ public class BondService {
 
         logger.info("Adding new bond to cache with id: {}", bondId);
 
-        bondLazyCache.put(bondId, bond);
+        bondCache.put(bondId, bond);
     }
 
     public Bond getBondById(String id) {
 
         logger.info("Looking for bond with id: {}", id);
 
-        final var bond = bondLazyCache.get(id);
+        final var bond = bondCache.get(id);
 
         if (bond == null) {
 

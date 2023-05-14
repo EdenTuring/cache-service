@@ -1,12 +1,11 @@
 package com.assignment.cache.service;
 
 import com.assignment.cache.model.Bond;
-import com.assignment.cache.utils.LazyCache;
+import com.assignment.cache.utils.Cache;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -20,10 +19,8 @@ public class BondServiceTest {
 
     public static final String TEST_ID = "testId";
 
-    private LazyCache<String, Bond> bondLazyCache = new LazyCache<>();
-
     @InjectMocks
-    private BondService bondService = new BondService(bondLazyCache);
+    private BondService bondService;
 
     @Nested
     class happyFlowTests {
